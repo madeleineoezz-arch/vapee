@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAPE EXPRESS</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#7c3aed;
+filter:blur(180px);
+top:-120px;
+left:-120px;
+opacity:0.35;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#00d4ff;
+filter:blur(180px);
+bottom:-120px;
+right:-120px;
+opacity:0.25;
+z-index:-1;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(16px);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+background:linear-gradient(90deg,#fff,#9f5cff,#00d4ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+nav button{
+border:none;
+background:rgba(255,255,255,0.05);
+color:white;
+padding:10px 16px;
+border-radius:14px;
+cursor:pointer;
+transition:0.3s;
+}
+
+nav button:hover{
+background:linear-gradient(90deg,#7c3aed,#00d4ff);
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:160px 20px 80px;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,0,128,0.18), transparent 20%),
+radial-gradient(circle at 80% 20%, rgba(0,212,255,0.18), transparent 20%),
+radial-gradient(circle at 70% 80%, rgba(124,58,237,0.18), transparent 20%),
+linear-gradient(135deg,#050505,#111111);
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:84px;
+margin-bottom:20px;
+}
+
+.hero span{
+background:linear-gradient(90deg,#9f5cff,#00d4ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:20px;
+opacity:0.8;
+max-width:700px;
+margin:auto;
+margin-bottom:35px;
+line-height:1.7;
+}
+
+.main-btn{
+padding:16px 34px;
+border:none;
+border-radius:18px;
+background:linear-gradient(90deg,#7c3aed,#00d4ff);
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 0 35px rgba(124,58,237,0.45);
+}
+
+.section{
+padding:110px 5% 70px;
+}
+
+.section h2{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.desc{
+opacity:0.7;
+margin-bottom:35px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.07);
+border-radius:28px;
+overflow:hidden;
+transition:0.3s;
+backdrop-filter:blur(10px);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 35px rgba(124,58,237,0.25);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+
+.card-content{
+padding:24px;
+}
+
+.card h3{
+font-size:20px;
+margin-bottom:14px;
+min-height:48px;
+}
+
+.price{
+font-size:18px;
+font-weight:700;
+color:#00d4ff;
+margin-bottom:18px;
+}
+
+.buy-btn{
+width:100%;
+padding:14px;
+border:none;
+border-radius:16px;
+background:linear-gradient(90deg,#7c3aed,#00d4ff);
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+
+.gif-box{
+margin-top:60px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.gif-box img{
+width:300px;
+border-radius:24px;
+box-shadow:0 0 35px rgba(124,58,237,0.35);
+}
+
+.contact-box{
+background:rgba(255,255,255,0.04);
+padding:35px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,0.07);
+}
+
+.contact-item{
+margin-bottom:18px;
+font-size:18px;
+}
+
+.order-btn{
+margin-top:20px;
+width:100%;
+padding:18px;
+border:none;
+border-radius:18px;
+background:linear-gradient(90deg,#7c3aed,#00d4ff);
+color:white;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
+
+footer{
+padding:30px;
+text-align:center;
+opacity:0.5;
+}
+
+@media(max-width:768px){
+header{
+flex-direction:column;
+gap:12px;
+}
+
+.hero h1{
+font-size:52px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.section h2{
+font-size:34px;
+}
+
+.gif-box img{
+width:100%;
+}
+}
+
+.floating-fruits{
+position:relative;
+height:120px;
+margin-top:40px;
+opacity:0.18;
+pointer-events:none;
+}
+
+.fruit{
+position:absolute;
+width:55px;
+height:55px;
+object-fit:contain;
+filter:drop-shadow(0 0 12px rgba(255,255,255,0.08));
+animation:float 6s ease-in-out infinite;
+}
+
+.fruit1{left:10%; top:20px;}
+.fruit2{left:35%; top:60px; animation-delay:1s;}
+.fruit3{right:28%; top:15px; animation-delay:2s;}
+.fruit4{right:8%; top:55px; animation-delay:3s;}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
+}
+
+
+.hero-fruits{
+position:absolute;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+}
+
+.hero-fruit{
+position:absolute;
+width:60px;
+opacity:0.22;
+filter:drop-shadow(0 0 12px rgba(255,255,255,0.2));
+animation:floatFruit 7s ease-in-out infinite;
+}
+
+.fruit-a{top:18%; left:10%;}
+.fruit-b{top:28%; right:14%; animation-delay:1s;}
+.fruit-c{bottom:20%; left:20%; animation-delay:2s;}
+.fruit-d{bottom:15%; right:18%; animation-delay:3s;}
+
+@keyframes floatFruit{
+0%{transform:translateY(0px) rotate(0deg);}
+50%{transform:translateY(-12px) rotate(6deg);}
+100%{transform:translateY(0px) rotate(0deg);}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">VAPE EXPRESS</div>
+<nav>
+<button onclick="goTo('home')">Start</button>
+<button onclick="goTo('wga')">WGA 35k</button>
+<button onclick="goTo('liquids')">Liquidy</button>
+<button onclick="goTo('contact')">Kontakt</button>
+</nav>
+</header>
+
+<section class="hero" id="home">
+
+<div class="hero-fruits">
+<img src="https://cdn-icons-png.flaticon.com/512/590/590685.png" class="hero-fruit fruit-a">
+<img src="https://cdn-icons-png.flaticon.com/512/590/590772.png" class="hero-fruit fruit-b">
+<img src="https://cdn-icons-png.flaticon.com/512/590/590753.png" class="hero-fruit fruit-c">
+<img src="https://cdn-icons-png.flaticon.com/512/590/590758.png" class="hero-fruit fruit-d">
+</div>
+
+<div class="hero-content">
+<h1>VAPE <span>EXPRESS</span></h1>
+<p>Premium vape shop z neonowym klimatem, nowoczesnym wyglądem i najlepszymi smakami.</p>
+<button class="main-btn" onclick="goTo('wga')">Sprawdź smaki</button>
+</div>
+</section>
+
+<section class="section" id="wga">
+<h2>WGA 35k</h2>
+<p class="desc">Najpopularniejsze smaki premium.</p>
+<div class="grid">
+
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Redbull</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+        
+            <div class="card-content">
+                <h3>Strawberry Redbull</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Blueberry Raspberry</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>Sour Apple Lemon</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Peach Kiss</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Watermelon Ice</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Blackcurrant Soda</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>Strawberry Kiwi</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Mad Blue Ice</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Pink Lemoniade</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Mixed Berries</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>Strawberry Kiwi</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Strawberry Watermelon</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Cola</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Grape Ice</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>Strawberry Ice</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Kiwi Passion Fruit Guava</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Dragon Fruit Ice</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Double Apple</h3>
+                <div class="price">60 zł</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+</div>
+
+
+<div class="floating-fruits">
+<img class="fruit fruit1" src="https://cdn-icons-png.flaticon.com/512/590/590685.png">
+<img class="fruit fruit2" src="https://cdn-icons-png.flaticon.com/512/590/590772.png">
+<img class="fruit fruit3" src="https://cdn-icons-png.flaticon.com/512/590/590753.png">
+<img class="fruit fruit4" src="https://cdn-icons-png.flaticon.com/512/590/590758.png">
+</div>
+
+</section>
+
+<section class="section" id="liquids">
+<h2>Liquidy</h2>
+<p class="desc">Liquidy premium 30ml.</p>
+<div class="grid">
+
+        <div class="card">
+            <div class="card-content">
+                <h3>Blueberry Sour Raspberry</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+
+            <div class="card-content">
+                <h3>Sour Apple Ice</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Apple Peach Ice</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>Blue Razz Ice</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Mixed Berries</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Strawberry Raspberry Cherry Ice</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Juicy Peach</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-content">
+                <h3>Watermelon Ice</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Strawberry Ice</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+        <div class="card">
+            
+            <div class="card-content">
+                <h3>Grape Cherry</h3>
+                <div class="price">50 zł / 30ml</div>
+                <button class="buy-btn" onclick="goSnap()">Zamów</button>
+            </div>
+        </div>
+        
+</div>
+</section>
+
+<section class="section" id="contact">
+<h2>Kontakt</h2>
+<div class="contact-box">
+<div class="contact-item">📞 +48 518 316 960</div>
+<div class="contact-item">👻 Snapchat: majorhwdp</div>
+<div class="contact-item">⚡ Zamówienia przez Snapchat</div>
+<button class="order-btn" onclick="goSnap()">Złóż zamówienie</button>
+</div>
+</section>
+
+<footer>
+VAPE EXPRESS © 2026
+</footer>
+
+<script>
+function goTo(id){
+document.getElementById(id).scrollIntoView({
+behavior:'smooth'
+});
+}
+
+function goSnap(){
+window.open('https://www.snapchat.com/add/majorhwdp','_blank');
+}
+</script>
+
+</body>
+</html>
